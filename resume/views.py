@@ -11,3 +11,7 @@ def index(request):
             form.save()
 
     return render(request,"index.html",{"form":form,"condidate":condidate})
+
+def condidate(request,pk):
+    condidate=Resume.objects.get(pk=pk)
+    return render(request,"condidate.html",{"condidate":condidate})

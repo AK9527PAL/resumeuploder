@@ -39,7 +39,7 @@
                 <h4 class="text-center mb-3"><u>List of Condidate</u></h4>
                 <div>
                     {%for con in condidate%}
-                        {{con.id}} : <a href="#" class="text-decoration-none">{{con.name}}</a>
+                        {{con.id}} : <a href="{% url 'condidate' con.id %}" class="text-decoration-none">{{con.name}}</a>
                         <hr>
                     {%endfor%}
                 </div>
