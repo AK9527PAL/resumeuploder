@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.http import HttpResponse,FileResponse
 from .forms import ResumeForm
 from .models import Resume
+from .pdf import html2pdf
 # Create your views here.
 def index(request):
     form=ResumeForm()
@@ -15,3 +17,8 @@ def index(request):
 def condidate(request,pk):
     condidate=Resume.objects.get(pk=pk)
     return render(request,"condidate.html",{"condidate":condidate})
+
+def pdf(request):
+    con="condidate.html"
+    pdf=html2pdf(con)
+    return HttpResponse(pdf,content_type="application/pdf")
